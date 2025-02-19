@@ -11,7 +11,7 @@ Table of Contents
 
 What is MaplePS?
 ------
-MaplePS is a unofficial release of Maple after maple.software had their source code leaked.
+MaplePS is a unofficial release of Maple after maple.software had their source code leaked.  
 This is not intended for use on Bancho. **It will get you banned.** I promise.
 
 Features
@@ -28,7 +28,7 @@ Features
 
 How does it work?
 ------
-MaplePS is basically just a injector with some extra steps.
+MaplePS is basically just a injector with some extra steps.  
 It uses a very basic `LoadLibrary` DLL injection method.
 
 1. Open MaplePS.
