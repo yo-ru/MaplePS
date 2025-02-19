@@ -4,14 +4,26 @@ Table of Contents
 ==================
 - [Table of Contents](#table-of-contents)
   - [What is MaplePS?](#what-is-mapleps)
+  - [Features](#features)
   - [How does it work?](#how-does-it-work)
   - [How do I get back on Bancho?](#how-do-i-get-back-on-bancho)
-  - [Features](#features)
   - [Get Started](#get-started)
 
 What is MaplePS?
 ------
 MaplePS is a unofficial release of Maple after maple.software had their source code leaked.
+
+Features
+------
+- Relax
+- Aim Assist
+- Timewarp
+- Replay Bot
+- Visuals (includes unreleased Enlighten & Taiko Mania overlays)
+- Spoofer
+- Disable Score Submission
+- Disable Spectators
+- Config System
 
 How does it work?
 ------
@@ -26,18 +38,6 @@ How does it work?
 How do I get back on Bancho?
 ------
 Simply remove the `_staging` and `osu!auth.dll` files from your osu! folder.
-
-Features
-------
-- Relax
-- Aim Assist
-- Timewarp
-- Replay Bot
-- Visuals (includes unreleased Enlighten & Taiko Mania overlays)
-- Spoofer
-- Disable Score Submission
-- Disable Spectators
-- Config System
 
 Get Started
 ------
