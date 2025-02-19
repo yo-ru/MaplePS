@@ -4,10 +4,10 @@ Table of Contents
 ==================
 - [Table of Contents](#table-of-contents)
   - [What is MaplePS?](#what-is-mapleps)
-  - [Requirements](#Features)
-  - [Setup](#setup)
-  - [Directory Structure](#directory-structure)
-  - [The End](#the-end)
+  - [How does it work?](#how-does-it-work)
+  - [How do I get back on Bancho?](#how-do-i-get-back-on-bancho)
+  - [Features](#features)
+  - [Get Started](#get-started)
 
 What is MaplePS?
 ------
@@ -21,7 +21,7 @@ How does it work?
 4. MaplePS will downgrade your `osu!auth.dll` to an older version that Maple supports.
 5. MaplePS will prompt you to open osu!.
 6. After you open osu!, simply press `Enter`.
-7. Maple will then inject.
+7. MaplePS will then inject.
 
 How do I get back on Bancho?
 ------
