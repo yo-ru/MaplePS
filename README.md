@@ -15,6 +15,9 @@ What is MaplePS?
 MaplePS is a unofficial release of Maple after maple.software had their source code leaked.  
 This is not intended for use on Bancho. **It will get you banned.** I promise.
 
+This repository serves as a place for the injector's source code, as well as compiled releases containing Maple's DLL binary.  
+I will not publically make Maple's source code available as it goes against my morals.
+
 Features
 ------
 - Server Selector
