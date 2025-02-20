@@ -121,6 +121,31 @@ DWORD ProcessID(const char* lpProcessName)
     return 0;
 }
 
+VOID StartApp(const wchar_t* lpCommandLine)
+{
+    STARTUPINFO si;
+    PROCESS_INFORMATION pi;
+
+    ZeroMemory(&si, sizeof(si));
+    si.cb = sizeof(si);
+    ZeroMemory(&pi, sizeof(pi));
+
+    CreateProcess(NULL,
+        const_cast<LPWSTR>(lpCommandLine),
+        NULL,
+        NULL,
+        FALSE,
+        0,
+        NULL,
+        NULL,
+        &si,
+        &pi
+    );
+
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+}
+
 int main()
 {
 	// Display welcome message
@@ -132,7 +157,9 @@ int main()
 	std::cout << "2. MaplePS will then create a \"_staging\" file and update your \"osu!auth.dll\"." << std::endl;
 	std::cout << "   - This will prevent osu! from updating and allow MaplePS to work correctly." << std::endl;
 	std::cout << "   - Don't worry. You can undo this later." << std::endl;
-	std::cout << "3. MaplePS will then inject. Pretty simple right?" << std::endl;
+	std::cout << "3. MaplePS will ask you to select a private server to connect to." << std::endl;
+	std::cout << "4. MaplePS will then open osu! on the selected private server." << std::endl;
+	std::cout << "5. Once osu! is open, press ENTER to inject MaplePS." << std::endl;
 
     // Begin prompt
 	std::cout << "\nAre you ready to begin? (Y/N): ";
@@ -214,18 +241,73 @@ int main()
 		return -1;
 	}
 
-    if (CopyFile(psAuthPath.c_str(), osuPath.c_str(), FALSE) == NULL)
+	DeleteFile(osuAuthPath.c_str());
+
+    if (CopyFile(psAuthPath.c_str(), osuAuthPath.c_str(), FALSE) == NULL)
     {
-		std::cout << "DONE" << std::endl;
+		std::cout << "FAILED (move)" << std::endl;     
+        return -1;
     }
-    else
+	std::cout << "DONE" << std::endl;
+
+    // Give user a selection of osu! private servers to open osu! on:
+	// 1. Ripple (osu!.exe -devserver ripple.moe)
+	// 2. Akatsuki (osu!.exe -devserver akatsuki.gg)
+	// 3. Gatari (osu!.exe -devserver gatari.pw)
+    // 4. Mamestagram (osu!.exe -devserver mamesosu.net)
+    // 5. NoLimits (osu!.exe -devserver osunolimits.dev)
+    // 6. Custom (prompt user for server url)
+	std::cout << "\nSelect a private server to connect to:" << std::endl;
+	std::cout << "1. Ripple (ripple.moe)" << std::endl;
+	std::cout << "2. Akatsuki (akatsuki.gg)" << std::endl;
+	std::cout << "3. Gatari (gatari.pw)" << std::endl;
+	std::cout << "4. Mamestagram (mamesosu.net)" << std::endl;
+	std::cout << "5. NoLimits (osunolimits.dev)" << std::endl;
+	std::cout << "6. Kawata (kawata.pw)" << std::endl;
+	std::cout << "7. Custom" << std::endl;
+	std::cout << "Select a private server: ";
+	int server;
+	std::cin >> server;
+
+	// Open osu! on selected private server
+	std::wstring serverUrl;
+	switch (server)
 	{
-		std::cout << "FAILED (copy)" << std::endl;
+	case 1:
+		serverUrl = L"ripple.moe";
+		break;
+	case 2:
+		serverUrl = L"akatsuki.gg";
+		break;
+	case 3:
+		serverUrl = L"gatari.pw";
+		break;
+	case 4:
+		serverUrl = L"mamesosu.net";
+		break;
+	case 5:
+		serverUrl = L"osunolimits.dev";
+		break;
+
+    case 6:
+		serverUrl = L"kawata.pw";
+		break;
+	case 7:
+		std::wcout << "Enter a custom private server URL: ";
+		std::wcin >> serverUrl;
+		break;
+	default:
+		std::cout << "Invalid selection." << std::endl;
 		return -1;
 	}
 
-	// Ask them to open osu! on their desired private server and prompt them to press enter to continue when they have done so
-	std::cout << "\nPlease open osu! (connect to a private server!)" << std::endl;
+	std::wcout << "Selected private server: " << serverUrl << std::endl;
+
+	// Open osu! on selected private server
+	std::wstring osuDevExePath = osuPath + L"\\osu!.exe -devserver " + serverUrl;
+	StartApp(osuDevExePath.c_str());
+
+	std::cout << "\nPlease wait for osu! to finish opening!" << std::endl;
 	std::cout << "Press ENTER and MaplePS will inject." << std::endl;
 	std::cin.ignore();
 	std::cin.get();
