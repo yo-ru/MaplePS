@@ -151,7 +151,9 @@ int main()
 	// Display welcome message
 	std::cout << "Welcome to MaplePS!" << std::endl;
 	std::cout << "MaplePS is a release of Maple Lite for osu!" << std::endl;
-	std::cout << "WARNING: DO NOT USE THIS ON BANCHO. YOU WILL GET BANNED!" << std::endl;
+    std::cout << "\nMade with <3 by Yoru." << std::endl;
+    std::cout << "Credit to maple.software for the original Maple project." << std::endl;
+	std::cout << "\nWARNING: DO NOT USE THIS ON BANCHO. YOU WILL GET BANNED!" << std::endl;
 	std::cout << "\nA few things are going to happen:" << std::endl;
 	std::cout << "1. You will be asked to locate your osu! installation directory." << std::endl;
 	std::cout << "2. MaplePS will then create a \"_staging\" file and update your \"osu!auth.dll\"." << std::endl;
