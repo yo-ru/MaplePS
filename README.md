@@ -16,6 +16,7 @@ This is not intended for use on Bancho. **It will get you banned.** I promise.
 
 Features
 ------
+- Server Selector
 - Relax
 - Aim Assist
 - Timewarp
@@ -34,7 +35,7 @@ It uses a very basic `LoadLibrary` DLL injection method.
 1. Open MaplePS.
 2. MaplePS will ask you to locate your osu! folder.
 3. MaplePS will then create a read-only `_staging` file in your osu! directory to prevent osu! from updating.
-4. MaplePS will downgrade your `osu!auth.dll` to an older version that Maple supports.
+4. MaplePS will downgrade your `osu!auth.dll` to a supported version.
 5. MaplePS will ask you to select a private server to connect to.
 6. MaplePS will then open osu! on the selected private server.
 7. Once osu! is open, press ENTER to inject MaplePS.
